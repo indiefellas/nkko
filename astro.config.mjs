@@ -6,7 +6,10 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   adapter: node({
-    mode: 'middleware'
+    mode: 'middleware',
   }),
-  site: 'https://nkko.link'
+  site: 'https://nkko.link',
+  security: {
+    checkOrigin: false
+  }
 });
