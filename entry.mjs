@@ -10,10 +10,10 @@ app.use(function (req, res, next) {
 });
 app.use(base, express.static('dist/client/'));
 app.use(ssrHandler);
-// app.use((req, res, next) => {
-//     res.statusCode = 404;
-//     res.send(fs.readFileSync('./dist/client/404.html','utf-8'))
-// });
+app.use((req, res, next) => {
+    res.statusCode = 404;
+    res.send(fs.readFileSync('./dist/client/404.html','utf-8'))
+});
 app.listen(4321);
 
 console.log(`Listening on port 4321`);

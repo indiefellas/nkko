@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/base.astro';
+---
+
+<Base>
+	<div class="main-container">
+        <img alt="404 Not Found" src="/img/404.svg">
+        <h2>we can't find the page :(</h2>
+
+        <div class="links">
+            <a class="jua" href="/">
+                <h2 class="reset">
+                    go back home?
+                </h2>
+            </a>
+        </div>
+    </div>
+
+    <style slot="head">
+        .main-container {
+			display: flex;
+			flex-direction: column;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+			height: 100%;
+            text-align: center;
+		}
+
+        img {
+            width: 450px;
+        }
+    </style>
+</Base>
