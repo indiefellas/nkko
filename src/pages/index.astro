@@ -1,5 +1,5 @@
 ---
-
+import '../styles/global.css';
 ---
 
 <html lang="en">
@@ -11,6 +11,55 @@
 		<title>nkko.link</title>
 	</head>
 	<body>
-		<h1>nkko.link</h1>
+		<main>
+			<h1>nkko.link</h1>
+			<p>Basically just a link shortener. Currently in very much alpha.</p>
+
+			<form action="/api/createShortUrl" method="post" enctype="application/x-www-form-urlencoded">
+				<input type="text" id="url" name="url" placeholder="Enter URL to shorten" aria-label="Enter URL to shorten" required>
+				<input type="text" id="id" name="id" placeholder="Custom Slug (optional)" aria-label="Custom Slug (optional)">
+				<button type="submit">Shorten URL</button>
+			</form>
+
+			<p id="response"></p>
+		</main>
+
+		<script>
+			let form: HTMLFormElement | null = document.querySelector('form[method="post"]');
+			const response = document.getElementById('response');
+			form?.addEventListener('submit', async (sb) => {
+				if (!response) return;
+				sb.preventDefault();
+				const formData = new FormData(form);
+				const params = new URLSearchParams();
+				for (const [key, value] of formData.entries()) {
+					params.append(key, value.toString());
+				}
+				try {
+					const res = await fetch('/api/createShortUrl', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/x-www-form-urlencoded',
+						},
+						body: params.toString(),
+					});
+
+					const data = await res.json();
+
+					if (res.ok) {
+						response.className = 'success';
+						response.innerHTML = `<p>Shortened URL: <a href="${data.url}" target="_blank">${data.url}</a></p><p>Slug: ${data.slug}</p>`;
+					} else {
+						response.className = 'error';
+						response.textContent = `Error: ${data.error}`;
+					}
+
+				} catch (error) {
+					console.error('There was an error:', error);
+					response.className = 'error';
+					response.textContent = 'An unexpected error occurred.';
+				}
+			})
+		</script>
 	</body>
 </html>

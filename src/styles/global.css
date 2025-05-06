@@ -1,0 +1,133 @@
+:root {
+    --bg: #10101a;
+    --acc: #29293a;
+    --acc-hover: #424255;
+    --bg2: #10101a55;
+    --main: #fffffe;
+    --sec: #b5b5dd;
+    --blue: #85a8ff;
+    --green: #A6FFB0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--sec);
+}
+
+a:hover, nav a.active {
+    text-decoration: underline;
+    color: var(--blue);
+}
+
+a:hover:nth-of-type(odd), nav a:nth-of-type(odd).active {
+    color: var(--green);
+}
+
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 250ms;
+    overflow-wrap: anywhere;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg);
+    color: var(--main);
+    font-size: 1.125rem;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+input, button {
+    background: var(--acc);
+    color: var(--main);
+    border: none;
+    padding: 12px;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 12px;
+
+    &:hover {
+        background-color: var(--acc-hover);
+    }
+}
+
+input[type="search"] {
+    width: 30vw;
+    min-width: 450px;
+
+    @media (width <= 700px) {
+        width: 90vw;
+        min-width: auto;
+    }
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+}
+
+#response p {
+    text-align: center;
+}
+
+h1.jua {
+    overflow-wrap: normal;
+}
+
+form[action="search"] {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+footer {
+    background: var(--acc);
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.side {
+    display: flex;
+    justify-content: space-between;
+
+    @media (width <= 700px) {
+        justify-content: baseline;
+        flex-direction: column;
+    }
+}
+
+footer .links {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
