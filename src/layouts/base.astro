@@ -1,0 +1,45 @@
+---
+import '../styles/global.css'
+const { title = 'IndieSeas', desc = 'The Indie Web Search Engine. Sail the Indie Seas!' } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <meta name="description" content={desc} />
+		<title>{title}</title>
+
+        <meta property="og:url" content="https://indieseas.org">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content={title}>
+		<meta property="og:description" content={desc}>
+		<meta name="theme-color" content="#5787ff">
+
+        <slot name="head" />
+    </head>
+    <body>
+        <main>
+            <slot />
+        </main>
+        <footer>
+			<div class="side">
+                <p>IndieSeas: The Indie Web Search Engine</p>
+                <p>Made with ♡ by indiefellas</p>
+            </div>
+            <div class="links">
+                <a href="/about">About</a>
+                <a href="/crawled">Is my site on IndieSeas?</a>
+                <a href="//team.indieseas.net">Team</a>
+                <p>
+                    IndieSeas interface is powered by
+                    <a rel="nofollow" target="_blank" href="https://astro.build">Astro</a>
+                    and
+                    <a rel="nofollow" target="_blank" href="https://github.com/dimdenGD/ultimate-express">µExpress</a>
+                </p>
+            </div>
+		</footer>
+    </body>
+</html>
